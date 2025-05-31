@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Twitch Background Changer",
+  "version": "1.1",
+  "description": "Changes the background and allows custom themes for Twitch",
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://www.twitch.tv/*"],
+      "js": ["content-script.js", "content/themeManager.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  }
+}
+
+/* Updated to load both the background changer and custom CSS scripts on Twitch pages. */
