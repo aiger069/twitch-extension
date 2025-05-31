@@ -1,0 +1,29 @@
+function enterTheaterMode() {
+  const btn = document.querySelector('[data-a-target="player-theatre-mode-button"]');
+  if (btn && btn.getAttribute('aria-pressed') === 'false') {
+    btn.click();
+  }
+}
+
+const observer = new MutationObserver(() => {
+  enterTheaterMode();
+});
+
+observer.observe(document.body, { childList: true, subtree: true });
+
+window.addEventListener('load', () => {
+  setTimeout(enterTheaterMode, 2000); // fallback
+});
+
+/* Automatically clicks the theater mode button on Twitch if it's not already active. */
+
+🎬 What is Theater Mode on Twitch?
+Theater Mode is a viewing mode on Twitch that:
+
+enlarges the video player for a more immersive experience
+
+Pushes the chat to the side or hides unnecessary UI elements
+
+Darkens the background around the stream for better focus
+
+
