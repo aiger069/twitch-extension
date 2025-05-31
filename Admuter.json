@@ -1,0 +1,23 @@
+let previousVolume = 1;
+
+function checkForAd() {
+  const adBanner = document.querySelector('.ad-banner__content');
+  const videoPlayer = document.querySelector('video');
+
+  if (adBanner && videoPlayer) {
+    if (!videoPlayer.muted) {
+      previousVolume = videoPlayer.volume;
+      videoPlayer.muted = true;
+      console.log('Ad detected. Muting...');
+    }
+  } else if (videoPlayer && videoPlayer.muted) {
+    videoPlayer.muted = false;
+    videoPlayer.volume = previousVolume;
+    console.log('Ad ended. Volume restored.');
+  }
+}
+
+setInterval(checkForAd, 1000);
+
+/* This script checks for Twitch ad elements and mutes the video player during ads, then unmutes after. */
+ note this doesnt block the ads its just muting them ad blocker is in development
