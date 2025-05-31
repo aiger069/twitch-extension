@@ -1,0 +1,17 @@
+function boostVolume(factor = 2) {
+  const video = document.querySelector('video');
+  if (!video) return;
+
+  const context = new (window.AudioContext || window.webkitAudioContext)();
+  const source = context.createMediaElementSource(video);
+  const gain = context.createGain();
+  gain.gain.value = factor;
+
+  source.connect(gain).connect(context.destination);
+  console.log(`Volume boosted by factor of ${factor}`);
+}
+
+boostVolume(2); // Change this value for higher/lower boost
+
+/* Uses the Web Audio API to increase volume output beyond the default limit (2x here). */
+what it does this just boosts ur useful if a stream is too quiet even at full volume
