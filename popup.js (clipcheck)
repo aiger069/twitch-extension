@@ -1,0 +1,43 @@
+// Loads and displays saved Twitch clip bookmarks
+
+function loadClips() {
+  chrome.storage.local.get(['clipBookmarks'], (res) => {
+    const clips = res.clipBookmarks || [];
+    const container = document.getElementById('clips');
+    container.innerHTML = '';
+
+    if (clips.length === 0) {
+      container.textContent = 'No saved clips yet.';
+      return;
+    }
+
+    clips.forEach((clip, index) => {
+      const div = document.createElement('div');
+      div.className = 'clip';
+
+      const link = document.createElement('a');
+      link.href = clip.url;
+      link.textContent = clip.url;
+      link.target = '_blank';
+
+      const del = document.createElement('button');
+      del.textContent = '✕';
+      del.onclick = () => {
+        clips.splice(index, 1);
+        chrome.storage.local.set({ clipBookmarks: clips }, loadClips);
+      };
+
+      div.appendChild(link);
+      div.appendChild(del);
+      container.appendChild(div);
+    });
+  });
+}
+
+loadClips();
+
+/*
+  This script loads saved Twitch clip links from local storage,
+  displays them in the popup, and allows deleting them.
+*/
+
