@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Twitch Background Changer", (if you want it for another platform change the title to tiktok or whatever the platform is named)
+  "version": "1.0",
+  "description": "Changes the background on the Twitch website", (same for here)
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://www.twitch.tv/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png" (here you must put ur picture)
+    }
+  }
+}
