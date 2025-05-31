@@ -49,6 +49,22 @@ applyBoost.addEventListener('click', () => {
     alert('Boost level saved. Reload Twitch.');
   });
 });
+// Auto-Join Channel Setup
+document.getElementById('saveChannelBtn').onclick = () => {
+  const input = document.getElementById('channelInput').value.trim();
+  if (!input) return;
+  chrome.storage.local.set({ autoJoinChannel: input }, () => {
+    document.getElementById('savedChannel').textContent = `Auto-join set to: ${input}`;
+  });
+};
+
+// Beim Laden: Aktuelle Einstellung anzeigen
+chrome.storage.local.get(['autoJoinChannel'], (res) => {
+  if (res.autoJoinChannel) {
+    document.getElementById('savedChannel').textContent = `Auto-join set to: ${res.autoJoinChannel}`;
+  }
+});
+
 
 
 /* This popup script lets the user choose a background image and enter custom CSS to apply to Twitch. */
