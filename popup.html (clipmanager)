@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Twitch Clip Bookmarks</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      width: 300px;
+      padding: 10px;
+    }
+    h2 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .clip {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      background: #f3f3f3;
+      padding: 5px;
+      border-radius: 4px;
+    }
+    .clip a {
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-right: 5px;
+      color: #9147ff;
+      text-decoration: none;
+    }
+    button {
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 2px 6px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Saved Clips</h2>
+  <div id="clips">Loading...</div>
+  <script src="popup.js"></script>
+</body>
+</html>
+
