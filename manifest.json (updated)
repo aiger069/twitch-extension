@@ -7,7 +7,15 @@
     "storage"
   ],
   "content_scripts": [
-    {
+    {"js": 
+  "content/themeManager.js",
+  "content/theaterMode.js",
+  "content/adMuter.js",
+  "content/volumeBooster.js",
+  "content/chatTranslator.js",
+  "content/clipBookmarker.js"
+]
+
       "matches": ["*://www.twitch.tv/*"],
       "js": ["content-script.js", "content/themeManager.js"],
       "run_at": "document_idle"
