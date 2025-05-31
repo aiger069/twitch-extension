@@ -1,4 +1,4 @@
-# Twitch Background Changer
+# Twitch extension 
 
 **Status:** 🚧 In Development
 
