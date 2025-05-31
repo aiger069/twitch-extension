@@ -40,4 +40,15 @@ saveCSSBtn.addEventListener('click', () => {
   });
 });
 
+const boostRange = document.getElementById('boostRange');
+const applyBoost = document.getElementById('applyBoost');
+
+applyBoost.addEventListener('click', () => {
+  const boostFactor = parseFloat(boostRange.value);
+  chrome.storage.sync.set({ boostFactor }, () => {
+    alert('Boost level saved. Reload Twitch.');
+  });
+});
+
+
 /* This popup script lets the user choose a background image and enter custom CSS to apply to Twitch. */
