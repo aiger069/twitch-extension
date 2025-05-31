@@ -1,0 +1,44 @@
+// Adds a button to save the current stream URL to bookmarks in local storage
+
+function createClipButton() {
+  const playerControls = document.querySelector('[data-a-target="player-controls-top"]');
+  if (!playerControls || document.getElementById('clip-bookmark-btn')) return;
+
+  const btn = document.createElement('button');
+  btn.id = 'clip-bookmark-btn';
+  btn.textContent = '🔖 Save Clip';
+  btn.style.marginLeft = '10px';
+  btn.style.cursor = 'pointer';
+  btn.style.background = '#9147ff';
+  btn.style.color = '#fff';
+  btn.style.border = 'none';
+  btn.style.padding = '6px 10px';
+  btn.style.borderRadius = '6px';
+
+  btn.onclick = () => {
+    const url = window.location.href;
+    const time = new Date().toLocaleString();
+
+    chrome.storage.local.get(['clipBookmarks'], (res) => {
+      const bookmarks = res.clipBookmarks || [];
+      bookmarks.push({ url, time });
+      chrome.storage.local.set({ clipBookmarks: bookmarks }, () => {
+        alert('Clip saved!');
+      });
+    });
+  };
+
+  playerControls.appendChild(btn);
+}
+
+const checkInterval = setInterval(() => {
+  if (document.querySelector('[data-a-target="player-controls-top"]')) {
+    createClipButton();
+    clearInterval(checkInterval);
+  }
+}, 1000);
+
+/*
+  This script adds a "Save Clip" button to the Twitch player controls.
+  When clicked, it saves the current URL with a timestamp to local storage.
+*/
