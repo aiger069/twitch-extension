@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Change Background</title>
+  <style>
+    body { font-family: sans-serif; padding: 10px; }
+    input[type="file"] { margin-bottom: 10px; }
+    img { max-width: 100%; height: auto; margin-top: 10px; }
+    textarea { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Select Background Image</h2>
+  <input type="file" id="bgFile" accept="image/*" />
+  <img id="preview" />
+  <button id="saveBtn">Save</button>
+
+  <hr>
+  <h2>Custom Theme (CSS)</h2>
+  <textarea id="cssInput" rows="5" style="width: 100%;"></textarea>
+  <button id="saveCSS">Apply CSS</button>
+
+  <script src="popup.js"></script>
+</body>
+</html>
+
+<!-- Adds a text box for users to input and save their custom CSS styles. -->
