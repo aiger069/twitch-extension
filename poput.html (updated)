@@ -25,3 +25,13 @@
 </html>
 
 <!-- Adds a text box for users to input and save their custom CSS styles. -->
+((
+<hr>
+<h2>Volume Booster</h2>
+<label for="boostRange">Boost Level (1–5):</label>
+<input type="range" id="boostRange" min="1" max="5" value="2">
+<button id="applyBoost">Apply Boost</button>
+
+add this code to the css section below ))
+
+
