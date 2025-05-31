@@ -1,0 +1,14 @@
+// Automatically redirects to a favorite Twitch channel when on the homepage
+
+chrome.storage.local.get(['autoJoinChannel'], (res) => {
+  const channel = res.autoJoinChannel;
+
+  if (channel && window.location.pathname === '/') {
+    window.location.href = `https://www.twitch.tv/${channel}`;
+  }
+});
+
+/*
+  This script checks if the user has set an autoJoinChannel.
+  If yes, and they are on the homepage, it redirects them to that channel.
+*/
